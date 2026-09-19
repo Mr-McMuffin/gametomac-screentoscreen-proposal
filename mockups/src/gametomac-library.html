@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>GameToMac — library (concept)</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  :root {
+    --ink: #17142b; --panel: #211d3a; --raise: #2c2750; --line: #3a3463;
+    --text: #efecfa; --mute: #a39dc4; --hot: #ff7a59; --great: #56d39b; --ok: #f2c14e; --work: #ef6f8b;
+  }
+  body { background: #cfc8e2; color: var(--text); }
+  .stage-note { color: #2a2447; }
+  .win { width: 1260px; height: 790px; background: var(--ink); display: grid; grid-template-columns: 228px 1fr; }
+
+  aside { background: var(--panel); border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; }
+  .brand { display: flex; align-items: center; gap: 9px; margin: 22px 6px 20px; }
+  .mark { width: 30px; height: 30px; border-radius: 8px; background: var(--hot); display: grid; place-items: center; font: 800 15px "Futura", sans-serif; color: var(--ink); letter-spacing: -0.04em; }
+  .brand b { font: 700 16px "Futura", sans-serif; letter-spacing: -0.01em; }
+  .grp { font-size: 11px; color: var(--mute); margin: 16px 8px 6px; }
+  .nav { list-style: none; }
+  .nav li { display: flex; justify-content: space-between; padding: 7px 10px; border-radius: 7px; color: #d9d4f0; }
+  .nav li.on { background: var(--raise); color: #fff; font-weight: 600; }
+  .nav li span { color: var(--mute); font-variant-numeric: tabular-nums; font-weight: 400; }
+  .engine { margin-top: auto; border: 1px solid var(--line); border-radius: 9px; padding: 10px 11px; font-size: 12px; color: var(--mute); }
+  .engine strong { display: flex; align-items: center; gap: 7px; color: var(--text); font-weight: 600; margin-bottom: 3px; }
+  .engine strong::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--great); }
+
+  main { display: flex; flex-direction: column; min-width: 0; }
+  .bar { height: 56px; display: flex; align-items: center; gap: 12px; padding: 0 22px; border-bottom: 1px solid var(--line); }
+  .bar h1 { font-size: 17px; font-weight: 650; margin-right: auto; }
+  .search { width: 260px; height: 30px; border-radius: 8px; background: var(--panel); border: 1px solid var(--line); color: var(--mute); display: flex; align-items: center; padding: 0 11px; }
+  .btn { height: 30px; padding: 0 14px; border-radius: 8px; background: var(--hot); color: var(--ink); font-weight: 700; display: flex; align-items: center; }
+  .seg { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; height: 30px; }
+  .seg span { padding: 0 11px; display: flex; align-items: center; color: var(--mute); }
+  .seg span.on { background: var(--raise); color: #fff; }
+
+  .drop { margin: 18px 22px 0; border: 1.5px dashed #5a5290; border-radius: 11px; padding: 13px 16px; display: flex; align-items: center; gap: 14px; color: var(--mute); }
+  .drop b { color: var(--text); font-weight: 600; }
+  .drop em { font-style: normal; margin-left: auto; color: #d9d4f0; border: 1px solid var(--line); border-radius: 7px; padding: 5px 11px; }
+
+  .grid { padding: 18px 22px 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .game .cover { aspect-ratio: 3 / 4; border-radius: 9px; position: relative; overflow: hidden; padding: 11px; display: flex; align-items: flex-end; box-shadow: 0 0 0 1px rgba(255,255,255,0.07); }
+  .cover h3 { position: relative; z-index: 2; font-size: 17px; line-height: 1.02; }
+  .cover .shape { position: absolute; z-index: 1; }
+  .game p { margin-top: 7px; font-weight: 600; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--mute); margin-top: 2px; }
+  .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+  .great { --c: var(--great); } .ok { --c: var(--ok); } .work { --c: var(--work); } .none { --c: #6d6696; }
+</style></head>
+<body>
+<div class="win">
+  <aside>
+    <div class="lights"><i></i><i></i><i></i></div>
+    <div class="brand"><div class="mark">G▸</div><b>GameToMac</b></div>
+    <ul class="nav">
+      <li class="on">Library <span>12</span></li>
+      <li>Installed <span>7</span></li>
+      <li>Compatibility list <span>640</span></li>
+      <li>Downloads</li>
+    </ul>
+    <div class="grp">Add games from</div>
+    <ul class="nav">
+      <li>Steam</li><li>GOG</li><li>Epic Games</li><li>A Windows installer (.exe)</li>
+    </ul>
+    <div class="engine"><strong>Engine ready</strong>Wine 10 with Game Porting Toolkit. Updates install on their own.</div>
+  </aside>
+  <main>
+    <div class="bar">
+      <h1>Library</h1>
+      <div class="seg"><span class="on">All</span><span>Plays great</span><span>Playable</span></div>
+      <div class="search">Search your games</div>
+      <div class="btn">Add a game</div>
+    </div>
+    <div class="drop"><b>Drop a Windows game here.</b> GameToMac finds its community profile and sets everything up. <em>Choose a file</em></div>
+    <div class="grid">
+      <div class="game"><div class="cover" style="background:#0f3b46"><div class="shape" style="width:150%;height:60%;left:-25%;top:-18%;border-radius:50%;background:#1f7a80"></div><h3 style="font-family:Didot,serif;font-size:21px;color:#e6f7f1">Hollow<br>Tide</h3></div><p>Hollow Tide</p><span class="pill great">Plays great</span></div>
+      <div class="game"><div class="cover" style="background:#c8452f"><div class="shape" style="inset:0;background:repeating-linear-gradient(135deg,transparent 0 14px,rgba(0,0,0,.16) 14px 28px)"></div><h3 style="font-family:Rockwell,serif;color:#fff2d9;text-transform:uppercase;font-size:15px">Ironvale<br>Tactics</h3></div><p>Ironvale Tactics</p><span class="pill great">Plays great</span></div>
+      <div class="game"><div class="cover" style="background:#160f3d"><div class="shape" style="left:0;right:0;top:46%;height:3px;background:#ff3ea5;box-shadow:0 12px 0 #29d3ff,0 24px 0 #ff3ea5,0 36px 0 #29d3ff"></div><h3 style="font-family:Futura,sans-serif;font-style:italic;color:#29d3ff;font-size:19px">NEON<br>DRIFT 2089</h3></div><p>Neon Drift 2089</p><span class="pill ok">Playable</span></div>
+      <div class="game"><div class="cover" style="background:#d8cfae"><div class="shape" style="width:64px;height:64px;right:14px;top:16px;border-radius:50%;background:#e2743a"></div><h3 style="font-family:'Gill Sans',sans-serif;color:#2f3a2a;font-weight:600;font-size:19px">Saltmarsh</h3></div><p>Saltmarsh</p><span class="pill great">Plays great</span></div>
+      <div class="game"><div class="cover" style="background:#2f4a6b"><div class="shape" style="inset:0;clip-path:polygon(50% 12%,88% 62%,50% 50%,12% 62%);background:#f4d35e"></div><h3 style="font-family:'Avenir Next Condensed','Avenir Next',sans-serif;font-weight:700;color:#fff;text-transform:uppercase;font-size:15px;letter-spacing:.04em">Kestrel<br>Squadron</h3></div><p>Kestrel Squadron</p><span class="pill great">Plays great</span></div>
+      <div class="game"><div class="cover" style="background:#241a17"><div class="shape" style="width:120px;height:120px;left:-30px;top:-30px;border-radius:50%;border:16px solid #a8431f"></div><h3 style="font-family:Georgia,serif;font-style:italic;color:#f1d9c5;font-size:18px">Orchard<br>of Ash</h3></div><p>Orchard of Ash</p><span class="pill work">Needs work</span></div>
+
+      <div class="game"><div class="cover" style="background:#7bc96f"><div class="shape" style="inset:0;background:conic-gradient(#6abb5f 25%,transparent 0 50%,#6abb5f 0 75%,transparent 0);background-size:34px 34px"></div><h3 style="font-family:'Marker Felt','Chalkboard SE',sans-serif;color:#173b19;font-size:19px">Pocket<br>Kingdoms</h3></div><p>Pocket Kingdoms</p><span class="pill great">Plays great</span></div>
+      <div class="game"><div class="cover" style="background:#e9e4f5"><div class="shape" style="width:2px;top:0;bottom:38%;left:50%;background:#4b3f86;box-shadow:-22px 0 0 #4b3f86,22px 0 0 #4b3f86"></div><h3 style="font-family:Optima,sans-serif;color:#2b2257;font-size:21px;letter-spacing:.12em">WRENFALL</h3></div><p>Wrenfall</p><span class="pill ok">Playable</span></div>
+      <div class="game"><div class="cover" style="background:#f2e94e"><div class="shape" style="width:96px;height:96px;right:-20px;top:22px;background:#111;transform:rotate(18deg)"></div><h3 style="font-family:'Helvetica Neue',sans-serif;font-weight:800;color:#111;font-size:20px;letter-spacing:-.03em">Static<br>Bloom</h3></div><p>Static Bloom</p><span class="pill great">Plays great</span></div>
+      <div class="game"><div class="cover" style="background:#4a1526"><div class="shape" style="inset:0;clip-path:polygon(18% 40%,30% 18%,42% 34%,50% 12%,58% 34%,70% 18%,82% 40%,82% 48%,18% 48%);background:#e2b04a"></div><h3 style="font-family:Didot,serif;color:#f6dfae;font-size:18px">Cinder<br>&amp; Crown</h3></div><p>Cinder &amp; Crown</p><span class="pill ok">Playable</span></div>
+      <div class="game"><div class="cover" style="background:#05070f"><div class="shape" style="width:190px;height:190px;left:-40px;top:-96px;border-radius:50%;background:#2d5be3"></div><div class="shape" style="width:9px;height:9px;right:34px;top:96px;border-radius:50%;background:#fff"></div><h3 style="font-family:Futura,sans-serif;color:#fff;font-size:16px;letter-spacing:.2em">LOW<br>ORBIT</h3></div><p>Low Orbit</p><span class="pill great">Plays great</span></div>
+      <div class="game"><div class="cover" style="background:#33403a"><div class="shape" style="width:70px;height:70px;left:50%;top:26%;margin-left:-35px;border-radius:50%;background:#f7f0c6;box-shadow:0 0 0 14px rgba(247,240,198,.14),0 0 0 30px rgba(247,240,198,.07)"></div><h3 style="font-family:'American Typewriter',serif;color:#f7f0c6;font-size:18px">Mothlight</h3></div><p>Mothlight</p><span class="pill none">Not tested yet</span></div>
+    </div>
+  </main>
+</div>
+<div class="stage-note">Concept mockup for GameToMac. Game titles are invented for illustration; this is not a screenshot of released software.</div>
+</body></html>

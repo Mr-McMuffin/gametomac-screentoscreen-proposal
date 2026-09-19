@@ -1,0 +1,22 @@
+/* Shared chrome for the concept mockups. Rendered to PNG with headless Chrome. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1440px; height: 900px; overflow: hidden; }
+body {
+  font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+  font-size: 13px; line-height: 1.35;
+  display: grid; place-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+.stage-note {
+  position: absolute; left: 0; right: 0; bottom: 18px; text-align: center;
+  font-size: 12px; letter-spacing: 0.01em; opacity: 0.62;
+}
+.win {
+  position: relative; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 30px 70px rgba(10, 8, 30, 0.38), 0 0 0 1px rgba(0, 0, 0, 0.28);
+}
+.lights { display: flex; gap: 8px; align-items: center; }
+.lights i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+.lights i:nth-child(1) { background: #ff5f57; }
+.lights i:nth-child(2) { background: #febc2e; }
+.lights i:nth-child(3) { background: #28c840; }

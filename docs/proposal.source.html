@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GameToMac and ScreenToScreen — proposal</title>
+<style>
+  @page { size: Letter; margin: 0.5in 0.65in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; color: #15172a; font-size: 9.3pt; line-height: 1.42;
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { break-after: page; } .page:last-child { break-after: auto; }
+  .kicker { font-size: 8.6pt; color: #5b5f78; }
+  h1 { font-size: 22pt; line-height: 1.1; font-weight: 600; letter-spacing: -0.012em; margin: 3pt 0 6pt; }
+  .lede { font-size: 10.6pt; color: #33364d; max-width: 6.4in; }
+  .status { margin-top: 9pt; border: 1px solid #d5d7e2; border-left: 3pt solid #ff7a59; border-radius: 3pt; padding: 6pt 10pt; font-size: 8.8pt; color: #33364d; }
+  .two { display: flex; gap: 16pt; margin-top: 12pt; }
+  .two > section { flex: 1; min-width: 0; }
+  img { display: block; width: 100%; border-radius: 4pt; border: 1px solid #d5d7e2; }
+  h2 { font-size: 13pt; font-weight: 600; margin: 8pt 0 1pt; }
+  .for { font-size: 8.6pt; color: #5b5f78; margin-bottom: 5pt; }
+  h3 { font-size: 8.8pt; font-weight: 600; margin: 7pt 0 2pt; }
+  .g h3 { color: #c2452a; } .s h3 { color: #0a7f6e; }
+  p + p { margin-top: 4pt; }
+  ul { padding-left: 11pt; } li { margin-bottom: 2.4pt; }
+  hr { border: 0; border-top: 1px solid #d5d7e2; margin: 11pt 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.8pt; }
+  th { text-align: left; font-weight: 600; padding: 4pt 6pt 4pt 0; border-bottom: 1px solid #15172a; }
+  td { padding: 4.5pt 6pt 4.5pt 0; border-bottom: 1px solid #e3e5ec; vertical-align: top; }
+  td:first-child { width: 0.9in; color: #5b5f78; }
+  .h { font-size: 11.5pt; font-weight: 600; margin-bottom: 5pt; }
+  .credit { margin-top: 7pt; border: 1px solid #d5d7e2; border-radius: 3pt; padding: 6pt 9pt; font-size: 8.6pt; color: #33364d; }
+  .who { display: flex; justify-content: space-between; gap: 14pt; font-size: 8.8pt; }
+  .who b { font-weight: 600; }
+  footer { margin-top: 9pt; font-size: 8pt; color: #5b5f78; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <p class="kicker">Proposal for Anthropic's Claude for Open Source program, September 2026</p>
+  <h1>GameToMac and ScreenToScreen</h1>
+  <p class="lede">Two free, open-source apps that do jobs people currently pay for: running Windows games on a Mac, and using a spare tablet, phone or laptop as a second screen.</p>
+  <div class="status"><b>Where things stand.</b> Both projects are at the design and prototype stage. Nothing is released yet and there are no download numbers to report. The images are concept mockups; the games and figures in them are invented.</div>
+
+  <div class="two">
+    <section class="g">
+      <img src="../mockups/gametomac-library.png" alt="">
+      <h2>GameToMac</h2>
+      <p class="for">Windows games on a Mac with one click. Stands in for CrossOver.</p>
+      <h3>The gap</h3>
+      <p>Wine and Apple's Game Porting Toolkit already run much of the Windows catalogue on Apple silicon. Setup is the hard part. CrossOver solves it, as a paid product.</p>
+      <p>Whisky, the best-known free option, gathered close to 15,000 GitHub stars and was archived in April 2025. No free, maintained app with a shared compatibility database has replaced it.</p>
+      <h3>How it works</h3>
+      <ul>
+        <li>Drop in a game and press Play. The right engine and settings are applied for you.</li>
+        <li>Compatibility profiles are plain text files in a public repository, so one player's fix reaches everyone.</li>
+        <li>Honest ratings with frame rates reported on named Mac models.</li>
+        <li>Works with Steam, GOG, Epic Games or a plain installer.</li>
+      </ul>
+    </section>
+    <section class="s">
+      <img src="../mockups/screentoscreen-host.png" alt="">
+      <h2>ScreenToScreen</h2>
+      <p class="for">Any device with a browser becomes a second screen. Stands in for Duet Display and Luna Display.</p>
+      <h3>The gap</h3>
+      <p>A tablet as a second monitor usually means a subscription, a hardware dongle, or staying inside one vendor's devices.</p>
+      <p>Deskreen proved the browser approach, but a true extended desktop needs a dummy display adapter, and newer features are planned for a paid edition. ScreenToScreen creates the display in software and keeps every feature open.</p>
+      <h3>How it works</h3>
+      <ul>
+        <li>The other device installs nothing. It opens a web address and enters a four-digit number.</li>
+        <li>Extend the desktop, mirror it, or share one window.</li>
+        <li>Video goes straight to the browser over the local network. No relay server, account or tracking.</li>
+        <li>Works over Wi-Fi or a cable.</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<div class="page">
+  <img src="../mockups/screentoscreen-desk.png" alt="" style="width:78%;margin:0 auto">
+  <hr>
+  <p class="h">Six-month plan</p>
+  <table>
+    <tr><th>Months</th><th>GameToMac</th><th>ScreenToScreen</th></tr>
+    <tr><td>1 and 2</td><td>Engine manager, game detection, profile format published</td><td>Browser client and host streaming over WebRTC, mirror mode</td></tr>
+    <tr><td>3 and 4</td><td>Public alpha, first 40 tested profiles, contributor guide</td><td>Virtual display on Windows and macOS, extend mode, public alpha</td></tr>
+    <tr><td>5 and 6</td><td>100 tested profiles, store integrations, signed release</td><td>Single-window mode, Linux host, signed release</td></tr>
+  </table>
+  <hr>
+  <div class="two" style="margin-top:0">
+    <section>
+      <p class="h">How Claude would be used</p>
+      <ul>
+        <li><b>Compatibility work.</b> Each failing game is its own investigation through Wine logs, graphics traces and crash dumps. This is the largest share of the work.</li>
+        <li><b>Hard systems code.</b> Display drivers, virtual displays, low-latency encoding and WebRTC tuning.</li>
+        <li><b>Tests and CI</b> across macOS, Windows, Linux and mobile browsers.</li>
+        <li><b>Docs and onboarding,</b> so non-engineers can submit a profile.</li>
+        <li><b>Reviewing contributions</b> fast enough that contributors stay.</li>
+      </ul>
+    </section>
+    <section>
+      <p class="h">What we commit to</p>
+      <ul>
+        <li>Both apps stay free and open source under GPL-3.0, so nobody can close the code and sell it.</li>
+        <li>Anthropic's support credited in each README, in every release's notes, and in each app's About window.</li>
+        <li>A public write-up of how Claude was used, including what did not work.</li>
+      </ul>
+      <div class="credit">The credit "Proudly supported by Anthropic" is a proposal. It will appear only with Anthropic's approval, in the form Anthropic prefers, and without Anthropic's logo unless permitted.</div>
+    </section>
+  </div>
+  <hr>
+  <div class="who">
+    <span><b>Alex</b>, Smola Designs, Kitchener, Ontario, Canada</span>
+    <span>github.com/Mr-McMuffin</span>
+    <span>alex@smoladesigns.com</span>
+  </div>
+  <footer>Full proposal and mockups: github.com/Mr-McMuffin/gametomac-screentoscreen-proposal. GameToMac and ScreenToScreen are independent projects, not affiliated with the companies named here.</footer>
+</div>
+
+</body>
+</html>
