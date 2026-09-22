@@ -27,14 +27,13 @@ for name in names:
         [CHROME, "--headless", "--hide-scrollbars", "--force-device-scale-factor=2",
          size_arg, "--screenshot=" + out, url],
         start_new_session=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    last, stable = -1, 0
-    for _ in range(80):
-        time.sleep(0.4)
-        size = os.path.getsize(out) if os.path.exists(out) else -1
-        stable = stable + 1 if (size == last and size > 0) else 0
-        last = size
-        if stable >= 3 or proc.poll() is not None:
-            break
-    if proc.poll() is None:
+    # Headless Chrome exits by itself once the file is written and then removes
+    # the code-signature clone it made in $TMPDIR/../X. Killing it early leaves
+    # that 1 GB clone behind, so only fall back to terminate on a real hang.
+    try:
+        proc.wait(timeout=90)
+    except subprocess.TimeoutExpired:
         proc.terminate()
+        proc.wait()
+    last = os.path.getsize(out) if os.path.exists(out) else -1
     print(name, last)
